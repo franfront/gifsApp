@@ -17,5 +17,10 @@ export class SidebarComponent {
     
   }
 
+
+  search(term: string){ // click y carga esos gifs
+    this.gifsService.searchGifs(term)
+  }
+
   
 }
