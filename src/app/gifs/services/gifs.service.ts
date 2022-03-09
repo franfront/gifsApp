@@ -9,6 +9,8 @@ export class GifsService {
 
   private _history: string[] = [];
 
+  public results: any[] = []
+
   get history() {
     return [...this._history];
   }
@@ -24,9 +26,10 @@ export class GifsService {
       this._history.unshift(query); //sino está agregar
       this._history = this._history.splice(0, 10); // limita a 10
     }
-    this.http.get('https://api.giphy.com/v1/gifs/search?api_key=F9g6ajuVyvksbMuzTzPhB7hN02oWCmKh&q=one piece&limit=15')
+    this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=F9g6ajuVyvksbMuzTzPhB7hN02oWCmKh&q=${query}&limit=15`)
         .subscribe((resp: any) =>{
-          console.log(resp.data)
+          console.log(resp.data);
+          this.results = resp.data;
         })
 
 
